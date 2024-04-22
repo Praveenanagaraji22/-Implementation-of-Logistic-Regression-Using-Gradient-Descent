@@ -21,65 +21,123 @@ Developed by: PRAVEENA N
 RegisterNumber: 212222040122
 */
 ```
+
 ```
 import pandas as pd
-data=pd.read_csv("C:/Users/admin/Downloads/Employee (1).csv")
-data.head()
+import numpy as np
+import matplotlib.pyplot as plt
 ```
 ```
-data.info()
+dataset=pd.read_csv("C:/Users/SEC/Downloads/Placement_Data.csv")
+dataset
 ```
 ```
-data.isnull()
+dataset=dataset.drop('sl_no',axis=1)
+dataset=dataset.drop('salary',axis=1)
 ```
 ```
-data.isnull().sum()
+dataset["gender"]=dataset["gender"].astype('category')
+dataset["ssc_b"]=dataset["ssc_b"].astype('category')
+dataset["hsc_b"]=dataset["hsc_b"].astype('category')
+dataset["degree_t"]=dataset["degree_t"].astype('category')
+dataset["workex"]=dataset["workex"].astype('category')
+dataset["specialisation"]=dataset["specialisation"].astype('category')
+dataset["status"]=dataset["status"].astype('category')
+dataset["hsc_s"]=dataset["hsc_s"].astype('category')
+dataset.dtypes
 ```
 ```
-data['left'].value_counts()
+dataset["gender"]=dataset["gender"].cat.codes
+dataset["ssc_b"]=dataset["ssc_b"].cat.codes
+dataset["hsc_b"]=dataset["hsc_b"].cat.codes
+dataset["degree_t"]=dataset["degree_t"].cat.codes
+dataset["workex"]=dataset["workex"].cat.codes
+dataset["specialisation"]=dataset["specialisation"].cat.codes
+dataset["status"]=dataset["status"].cat.codes
+dataset["hsc_s"]=dataset["hsc_s"].cat.codes
 ```
 ```
-from sklearn.preprocessing import LabelEncoder
-le=LabelEncoder()
+dataset
 ```
 ```
-data['salary']=le.fit_transform(data['salary'])
-data.head()
+X=dataset.iloc[:, :-1].values
+Y=dataset.iloc[:, -1].values
 ```
 ```
-x=data[['satisfaction_level','last_evaluation','number_project','average_montly_hours','time_spend_company','Work_accident','promotion_last_5years','salary']]
-x.head()
+Y
 ```
 ```
-y=data['left']
-y.head()
+theta=np.random.randn(X.shape[1])
+y=Y
 ```
 ```
-from sklearn.model_selection import train_test_split
-x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=100)
+def sigmoid(z):
+    return 1/(1+np.exp(-z))
 ```
 ```
-from sklearn.tree import DecisionTreeClassifier
-dt=DecisionTreeClassifier(criterion='entropy')
-dt.fit(x_train,y_train)
-y_predict=dt.predict(x_test)
+def loss(theta,X,y):
+    h=sigmoid(X.dot(theta))
+    return -np.sum(y*np.log(h)+(1-y)*np.log(1-h))
 ```
 ```
-from sklearn import metrics
-accuracy=metrics.accuracy_score(y_test,y_predict)
-accuracy
+def gradient_descent(theta,X,y,alpha,num_iterations):
+    m=len(y)
+    for i in range(num_iterations):
+        h=sigmoid(X.dot(theta))
+        gradient=X.T.dot(h-y)/m
+        theta-=alpha*gradient
+    return theta
 ```
 ```
-dt.predict([[0.5,0.8,9,260,6,0,1,2]])
+theta=gradient_descent(theta,X,y,alpha=0.01,num_iterations=1000)
+```
+```
+def predict(theta,X):
+    h=sigmoid(X.dot(theta))
+    y_pred=np.where(h>=0.5,1,0)
+    return y_pred
+```
+```
+y_pred=predict(theta,X)
+```
+```
+accuracy=np.mean(y_pred.flatten()==y)
+print("Accuracy:",accuracy)
+```
+```
+print(y_pred)
+```
+```
+print(Y)
+```
+```
+xnew=np.array([[0,87,0,95,0,2,78,2,0,0,1,0]])
+y_prednew=predict(theta,xnew)
+print(y_prednew)
+```
+```
+xnew=np.array([[0,0,0,0,0,2,8,2,0,0,1,0]])
+y_prednew=predict(theta,xnew)
+print(y_prednew)
 ```
 
 ## Output:
-![Screenshot 2024-04-01 155600](https://github.com/anu-varshini11/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/138969827/db7f1712-b196-4f0b-823f-987760094481)
-![Screenshot 2024-04-01 155622](https://github.com/anu-varshini11/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/138969827/a25c3a29-b464-4e37-86d1-7d38d90ef8f4)
-![Screenshot 2024-04-01 155644](https://github.com/anu-varshini11/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/138969827/2204d1d9-47b3-4b74-85e5-c17bc22bc965)
-![Screenshot 2024-04-01 155700](https://github.com/anu-varshini11/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/138969827/2d3f7b59-1f8e-447a-83d8-2658efb07f4b)
-![Screenshot 2024-04-01 155720](https://github.com/anu-varshini11/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/138969827/6be8daea-a39d-4233-a233-f71b5d23f098)
-![Screenshot 2024-04-01 155734](https://github.com/anu-varshini11/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/138969827/fac96fbf-2407-42c1-a5c5-68edf8b2e071)
+![image](https://github.com/Praveenanagaraji22/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/119393514/9a6375f1-3276-47e1-87dc-efa2c319789b)
+
+![image](https://github.com/Praveenanagaraji22/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/119393514/c0a5d9ab-ad43-491b-bc8d-ae1b84e7bd2a)
+
+![image](https://github.com/Praveenanagaraji22/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/119393514/7a689516-72cc-45ff-aaad-1588e8744fb0)
+
+![image](https://github.com/Praveenanagaraji22/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/119393514/88e2a527-7fff-4f78-834e-2cd0a8c480f9)
+
+![image](https://github.com/Praveenanagaraji22/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/119393514/fd8f803e-49f6-4f59-9ced-800c5fb9fd2a)
+
+![image](https://github.com/Praveenanagaraji22/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/119393514/0215ca6b-21d1-425d-a65b-2e2d48242391)
+
+![image](https://github.com/Praveenanagaraji22/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/119393514/ea873136-4387-4c41-96ae-dca9d1a6daa9)
+
+![image](https://github.com/Praveenanagaraji22/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/119393514/f620fb51-026f-4602-8930-68e747a1be2c)
+![image](https://github.com/Praveenanagaraji22/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/119393514/46e1a8c1-c2d3-4a5d-9b23-086973db5e23)
 
 ## Result:
 Thus the program to implement the the Logistic Regression Using Gradient Descent is written and verified using python programming.
