@@ -104,6 +104,7 @@ print(y_prednew)
 
 ## Output:
 ![image](https://github.com/Praveenanagaraji22/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/119393514/9a6375f1-3276-47e1-87dc-efa2c319789b)
+
 ![image](https://github.com/Praveenanagaraji22/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/119393514/c0a5d9ab-ad43-491b-bc8d-ae1b84e7bd2a)
 
 ![image](https://github.com/Praveenanagaraji22/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/119393514/7a689516-72cc-45ff-aaad-1588e8744fb0)
