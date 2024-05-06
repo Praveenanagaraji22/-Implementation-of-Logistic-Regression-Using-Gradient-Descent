@@ -8,10 +8,20 @@ To write a program to implement the the Logistic Regression Using Gradient Desce
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
-1. Initialize Parameters: Set initial values for the weights (w) and bias (b).
-2. Compute Predictions: Calculate the predicted probabilities using the logistic function.
-3. Compute Gradient: Compute the gradient of the loss function with respect to w and b.
-4. Update Parameters: Update the weights and bias using the gradient descent update rule. Repeat steps 2-4 until convergence or a maximum number of iterations is reached.
+
+STEP 1. Start the program.
+
+STEP 2. Data Preprocessing: Read dataset, drop unnecessary columns, and encode categorical variables.
+
+STEP 3. Initialize Parameters: Initialize theta randomly and extract features (x) and target variable (y).
+
+STEP 4. Define Sigmoid Function: Implement the sigmoid function to transform linear outputs into probabilities.
+
+STEP 5. Define Loss Function and Gradient Descent: Define loss function using sigmoid output and implement gradient descent to minimize loss.
+
+STEP 6. Prediction and Evaluation: Use trained parameters to predict on dataset, calculate accuracy, and optionally predict placement status of new data points.
+
+STEP 7. End the program.
 
 ## Program:
 ```
@@ -103,22 +113,33 @@ print(y_prednew)
 ```
 
 ## Output:
-![image](https://github.com/Praveenanagaraji22/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/119393514/9a6375f1-3276-47e1-87dc-efa2c319789b)
 
-![image](https://github.com/Praveenanagaraji22/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/119393514/c0a5d9ab-ad43-491b-bc8d-ae1b84e7bd2a)
+### data columns
 
-![image](https://github.com/Praveenanagaraji22/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/119393514/7a689516-72cc-45ff-aaad-1588e8744fb0)
+![image](https://github.com/SanjayRagavendar/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/91368803/3aec9c46-c885-42bb-8b45-215ac5d6274f)
 
-![image](https://github.com/Praveenanagaraji22/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/119393514/88e2a527-7fff-4f78-834e-2cd0a8c480f9)
+### data after encoding
 
-![image](https://github.com/Praveenanagaraji22/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/119393514/fd8f803e-49f6-4f59-9ced-800c5fb9fd2a)
+![image](https://github.com/SanjayRagavendar/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/91368803/b6a86619-04fe-4560-a310-194c80aa728a)
 
-![image](https://github.com/Praveenanagaraji22/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/119393514/0215ca6b-21d1-425d-a65b-2e2d48242391)
 
-![image](https://github.com/Praveenanagaraji22/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/119393514/ea873136-4387-4c41-96ae-dca9d1a6daa9)
+### Array value of Y:
 
-![image](https://github.com/Praveenanagaraji22/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/119393514/f620fb51-026f-4602-8930-68e747a1be2c)
-![image](https://github.com/Praveenanagaraji22/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/119393514/46e1a8c1-c2d3-4a5d-9b23-086973db5e23)
+![image](https://github.com/SanjayRagavendar/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/91368803/a7b6a576-f916-4792-a189-9df2e8ca530f)
+
+
+
+### Accuracy
+
+![image](https://github.com/SanjayRagavendar/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/91368803/12a41cc4-18b2-4375-a7eb-9d1c4a554cc5)
+
+
+  
+### New accuracy
+![image](https://github.com/SanjayRagavendar/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/91368803/36fd6f69-d021-4489-b46a-ab4f68f410ea)
+
+### New accuracy
+![image](https://github.com/SanjayRagavendar/-Implementation-of-Logistic-Regression-Using-Gradient-Descent/assets/91368803/36fd6f69-d021-4489-b46a-ab4f68f410ea)
 
 ## Result:
 Thus the program to implement the the Logistic Regression Using Gradient Descent is written and verified using python programming.
